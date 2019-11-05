@@ -22,9 +22,9 @@ namespace Assignment1
 
             //problem 2
             //Write a function to delete an element at desired position from an array. 
-            char[] Array2 = new char[] { 'a','b','g','t','e','u','i','z' };
+            char[] Array2 = new char[] { 'a', 'b', 'g', 't', 'e', 'u', 'i', 'z' };
             Console.WriteLine("Enter the index of element you want to delete");
-            int elementToDelete =int.Parse(Console.ReadLine());
+            int elementToDelete = int.Parse(Console.ReadLine());
             char[] resultArray = RemoveAt(Array2, elementToDelete);
             foreach (var element in resultArray)
             {
@@ -32,6 +32,9 @@ namespace Assignment1
             }
             Console.WriteLine();
 
+            //Write a program to print the upper triangular of a given square matrix. Fill the other elements with zeros
+            int[,] matrix = new int[4, 4] { { 1, 2, 3, 4 }, { 4, 5, 6, 6 }, { 7, 8, 9, 8 }, { 5, 9, 3, 7 } };
+            Print(matrix);
         }
         public static int[] Copy(double[] doubleArray)
         {
@@ -82,6 +85,26 @@ namespace Assignment1
                 }
             }
             return newArray;
+        }
+        public static void Print<T>(T[,] matrix)
+        {
+            int n = matrix.Length / matrix.GetLength(0);
+
+            for (int row = 0; row < n; row++)
+            {
+                for (int column = 0; column < n; column++)
+                {
+                    if (column >= row)
+                    {
+                        Console.Write($"{matrix[row, column]} ");
+                    }
+                    else
+                    {
+                        Console.Write("0 ");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
