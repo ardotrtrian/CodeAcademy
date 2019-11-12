@@ -162,7 +162,7 @@ namespace Assignment2
             //                           { -c , a }
             if (matrix.NumberOfRows == 2)
             {
-                double determinant = DeterminantOfMatrix(inverseMatrix,inverseMatrix.NumberOfRows);
+                double determinant = Math.Abs(DeterminantOfMatrix(inverseMatrix,inverseMatrix.NumberOfRows));
                 if (determinant == 0)
                 {
                     throw new Exception("Can not find inverse, because determinant of matrix A is zero.");
@@ -189,8 +189,7 @@ namespace Assignment2
             //TO DO for square matrices with dimenion 3 and above
             throw new Exception("Program does not support inverse for matrices with dimension 3 and above.");
 
-
-            return inverseMatrix;
+            //return inverseMatrix;
         }
 
         public static double Maximum(Matrix matrix)

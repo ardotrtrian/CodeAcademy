@@ -107,8 +107,9 @@ namespace Assignment2
 
             Console.WriteLine(message);
 
+
             //get determinant of matrix
-            var det = Matrix.DeterminantOfMatrix(matrixA, 3);
+            var det = Matrix.DeterminantOfMatrix(matrixA, matrixA.NumberOfRows);
             Console.WriteLine($"Determinant of matrix is {det}");
 
             //Inverse of matrix A
