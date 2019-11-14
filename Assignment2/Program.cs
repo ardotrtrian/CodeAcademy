@@ -107,24 +107,19 @@ namespace Assignment2
 
             Console.WriteLine(message);
 
-
-            //get determinant of matrix
-            var det = Matrix.DeterminantOfMatrix(matrixA, matrixA.NumberOfRows);
-            Console.WriteLine($"Determinant of matrix is {det}");
-
             //Inverse of matrix A
             Console.WriteLine("\nInverse of matrix A is: ");
-            Matrix inverse = Matrix.Inverse(matrixA);
-            for (int i = 0; i < inverse.NumberOfRows; i++)
+
+            IdentityMatrix inverse = Matrix.Inverse(matrixA);
+
+            for (int i = 0; i < inverse.NumberOfRowsAndColumns; i++)
             {
-                for (int j = 0; j < inverse.NumberOfColumns; j++)
+                for (int j = 0; j < inverse.NumberOfRowsAndColumns; j++)
                 {
                     Console.Write($"{inverse[i, j]} ");
                 }
                 Console.WriteLine();
             }
-
-            
         }
     }
 }

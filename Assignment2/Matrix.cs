@@ -71,7 +71,6 @@ namespace Assignment2
             return resultMatrix;
         }
 
-
         //Inorder two multiply two matrices, first matrix's columns count must be equal second matrix's row count.
         //and the result matrix will have first matrix's row count and second matrix's column count.
         public static Matrix Multiplication(Matrix matrixA, Matrix matrixB)
@@ -143,53 +142,6 @@ namespace Assignment2
             }
 
             return resultMatrix;
-        }
-
-        //A * A^(-1) = A^(-1) * A= Identity matrix
-        public static Matrix Inverse(Matrix matrix)
-        {
-            if(matrix.NumberOfRows != matrix.NumberOfColumns)
-            {
-                throw new Exception("Matrix must be square matrix to find its inverse.");
-            }
-
-            Matrix inverseMatrix = new Matrix(matrix.NumberOfRows, matrix.NumberOfColumns);
-
-            //special case for 2x2 matrix:
-            //A = { a , b }
-            //    { c , d }
-            //inverse of A = 1/(|ad-bc|) { d , -b }
-            //                           { -c , a }
-            if (matrix.NumberOfRows == 2)
-            {
-                double determinant = Math.Abs(DeterminantOfMatrix(inverseMatrix,inverseMatrix.NumberOfRows));
-                if (determinant == 0)
-                {
-                    throw new Exception("Can not find inverse, because determinant of matrix A is zero.");
-                }
-
-                Console.WriteLine($"\nDeterminant of matrix is {determinant}");
-                
-                Matrix MatrixII = new Matrix(matrix.NumberOfRows, matrix.NumberOfRows);
-                MatrixII[0, 0] = matrix[1, 1];
-                MatrixII[1, 1] = matrix[0, 0];
-                MatrixII[0, 1] = -(matrix[0, 1]);
-                MatrixII[1, 0] = -(matrix[1, 0]);
-
-                for (int i = 0; i < inverseMatrix.NumberOfRows; i++)
-                {
-                    for (int j = 0; j < inverseMatrix.NumberOfColumns; j++)
-                    {
-                        inverseMatrix[i, j] = Math.Round( 1/(determinant) * (MatrixII[i, j]) , 2 );
-                    }
-                }
-                return inverseMatrix;
-            }
-
-            //TO DO for square matrices with dimenion 3 and above
-            throw new Exception("Program does not support inverse for matrices with dimension 3 and above.");
-
-            //return inverseMatrix;
         }
 
         public static double Maximum(Matrix matrix)
@@ -298,67 +250,56 @@ namespace Assignment2
             }
             return true;
         }
-        
-        public static double DeterminantOfMatrix(Matrix mat, int n)
+        public static IdentityMatrix Inverse(Matrix matrix)
         {
-            if (mat.NumberOfRows != mat.NumberOfColumns)
+            // Matrix in not initialized
+            if (matrix == null)
             {
-                throw new Exception("Matrix must be square to calculate determinant");
+                throw new Exception("Matrix is Empty");
             }
 
-            double D = 0; // Initialize result 
-
-            if (n == 1)
-                return mat[0, 0];
-
-
-            // To store cofactors 
-            Matrix temp = new Matrix(mat.NumberOfRows,mat.NumberOfColumns);
-
-            // To store sign multiplier 
-            int sign = 1;
-
-            // Iterate for each element 
-            // of first row 
-            for (int f = 0; f < n; f++)
+            // Matrix is not square
+            if (matrix.NumberOfColumns != matrix.NumberOfRows)
             {
-
-                // Getting Cofactor of mat[0][f] 
-                getCofactor(mat, temp, 0, f, n);
-                D += sign * mat[0, f] * DeterminantOfMatrix(temp, n-1);
-
-                // terms are to be added with  
-                // alternate sign 
-                sign = -sign;
+                throw new Exception("Matrix must be square to find inverse.");
             }
-            return D;
-        }
-        private static void getCofactor(Matrix A, Matrix temp, int p, int q, int n)
-        {
-            int i = 0, j = 0;
 
-            // Looping for each element of the matrix 
-            for (int row = 0; row < n; row++)
+            IdentityMatrix IdentityMatrix = new IdentityMatrix(matrix.NumberOfColumns);
+
+            Matrix current = new Matrix(matrix.NumberOfColumns, matrix.NumberOfColumns);
+
+            for (int i = 0; i < matrix.NumberOfRows; i++)
             {
-                for (int col = 0; col < n; col++)
+                for (int j = 0; j < matrix.NumberOfColumns; j++)
                 {
-                    //  Copying into temporary matrix only those element 
-                    //  which are not in given row and column 
-                    if (row != p && col != q)
-                    {
-                        temp[i,j++] = A[row,col];
+                    current[i, j] = matrix[i, j];
+                }
+            }
 
-                        // Row is filled, so increase row index and 
-                        // reset col index 
-                        if (j == n - 1)
-                        {
-                            j = 0;
-                            i++;
-                        }
+            for (int i = 0; i < current.NumberOfColumns; i++)
+            {
+                double curr = current[i, i];
+
+                for (int k = 0; k < current.NumberOfColumns; k++)
+                {
+                    current[i, k] /= curr;
+                    IdentityMatrix[i, k] /= curr;
+                }
+
+                for (int j = 0; j < current.NumberOfColumns; j++)
+                {
+                    if (j == i) continue;
+
+                    double currentCoefficient = current[j, i];
+
+                    for (int k = 0; k < current.NumberOfRows; k++)
+                    {
+                        current[j, k] -= current[i, k] * currentCoefficient;
+                        IdentityMatrix[j, k] -= IdentityMatrix[i, k] * currentCoefficient;
                     }
                 }
             }
+            return IdentityMatrix;
         }
-
     }
 }
