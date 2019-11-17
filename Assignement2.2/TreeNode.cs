@@ -62,7 +62,6 @@ namespace Assignement2._2
             {
                 Root = treeNode;
                 CurrentTreeNode = treeNode;
-                //depthFirst.Push(treeNode);
             }
 
             public object Current
@@ -72,38 +71,52 @@ namespace Assignement2._2
                     return CurrentTreeNode;
                 }
             }
+
+            //Start with root node and push on to stack s
+            //While stack is not empty
+            // - Pop from stack current = s.pop() and process the node.
+            // - Push current.right onto to stack.
+            // - Push current.left onto to stack.
+
             public bool MoveNext()
             {
-                //if the first time we call the movenext, stack is filled with root, and current becomes root
+                //first time calling the MoveNext method
                 if (depthFirst.Count == 0)
                 {
                     depthFirst.Push(Root);
                     return true;
                 }
 
-                if (CurrentTreeNode.LeftNode != null)
+                if (depthFirst != null)
                 {
-                    var originalNode = CurrentTreeNode;
-                    CurrentTreeNode = CurrentTreeNode.LeftNode;
-                    depthFirst.Push(CurrentTreeNode);
-                    originalNode.LeftNode = null;
+                    //pop the node from stack and process it
+                    depthFirst.Pop();
+
+                    //push right child first if it exists
+                    if (CurrentTreeNode.RightNode != null)
+                    {
+                        depthFirst.Push(CurrentTreeNode.RightNode);
+                    }
+                    //then push left child,because left child must beprocessed first in preorder traversal
+                    if (CurrentTreeNode.LeftNode != null)
+                    {
+                        depthFirst.Push(CurrentTreeNode.LeftNode);
+                    }
+                    //when stack is full
+                    if (depthFirst.Count != 0)
+                    {
+                        //peek node in stack is the node to print next
+                        CurrentTreeNode = depthFirst.Peek();
+                    }
+                    else
+                    {
+                        //stack has become empty means all nodes has been printed and iteration is over
+                        return false;
+                    }
+                    //there is still elements to iterate through
                     return true;
                 }
-
-                if (CurrentTreeNode.RightNode != null)
-                {
-                    var originalNode = CurrentTreeNode;
-                    CurrentTreeNode = CurrentTreeNode.RightNode;
-                    depthFirst.Push(CurrentTreeNode);
-                    originalNode.RightNode = null;
-                    return true;
-                }
-
-                //if the node doeasnt have a left child nor a right child:
-                depthFirst.Pop();
-
-                CurrentTreeNode = depthFirst.Peek();
-                MoveNext();
+                //---------
                 return true;
             }
 
@@ -111,7 +124,6 @@ namespace Assignement2._2
             {
                 CurrentTreeNode = Root;
             }
-           
         }
 
         public override string ToString()

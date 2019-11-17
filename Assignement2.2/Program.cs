@@ -12,13 +12,15 @@ namespace Assignement2._2
         static void Main(string[] args)
         {
             //Create an Enumertar function Power() that returns all powers of number from 1 to its exponent
+            int number = 3;
+            int exponent = 6;
+            Console.WriteLine($"All powers of {number} to its exponent {exponent} are:");
 
-            //int number = 3;
-            //int exponent = 6;
-            //foreach (var item in Power(number,exponent))
-            //{
-            //    Console.Write($"{item} ");
-            //}
+            foreach (var item in Power(number, exponent))
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
 
             //---------------------------------------------------------------------------------------------
 
@@ -43,7 +45,7 @@ namespace Assignement2._2
             //-------------------------------------------------------------------------------------------
             Console.WriteLine();
 
-            //Implement a class BinaryTree and an enumerator doing a prefic traversal.
+            //Implement a class BinaryTree and an enumerator doing a prefix traversal.
             BinaryTree binaryTree = new BinaryTree();
             
             //filling the binary tree with nodes
@@ -66,11 +68,15 @@ namespace Assignement2._2
             binaryTree.Insert(15);
 
             var treeEnumerator = binaryTree.PreOrderTraversal();
+
+            Console.WriteLine("Nodes of the binary tree in a preorder traversal:");
             while (treeEnumerator.MoveNext())
             {
                 Console.Write($"{treeEnumerator.Current.ToString()} ");
             }
+            Console.WriteLine();
         }
+
         static IEnumerable Power(int number, int exponent)
         {
             int index = 0;
