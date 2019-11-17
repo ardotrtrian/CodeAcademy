@@ -41,11 +41,35 @@ namespace Assignement2._2
             }
 
             //-------------------------------------------------------------------------------------------
+            Console.WriteLine();
 
             //Implement a class BinaryTree and an enumerator doing a prefic traversal.
+            BinaryTree binaryTree = new BinaryTree();
+            
+            //filling the binary tree with nodes
+            binaryTree.Insert(25);
+            binaryTree.Insert(20);
+            binaryTree.Insert(10);
+            binaryTree.Insert(22);
+            binaryTree.Insert(5);
+            binaryTree.Insert(12);
+            binaryTree.Insert(1);
+            binaryTree.Insert(8);
+            binaryTree.Insert(36);
+            binaryTree.Insert(30);
+            binaryTree.Insert(40);
+            binaryTree.Insert(38);
+            binaryTree.Insert(28);
+            binaryTree.Insert(48);
+            binaryTree.Insert(45);
+            binaryTree.Insert(50);
+            binaryTree.Insert(15);
 
-            //TODO
-
+            var treeEnumerator = binaryTree.PreOrderTraversal();
+            while (treeEnumerator.MoveNext())
+            {
+                Console.Write($"{treeEnumerator.Current.ToString()} ");
+            }
         }
         static IEnumerable Power(int number, int exponent)
         {
