@@ -58,14 +58,11 @@ namespace Assignment2
 
             Matrix resultMatrix = new Matrix(matrixA.NumberOfRows, matrixA.NumberOfColumns);
 
-            double sum = 0;
-
             for (int i = 0; i < resultMatrix.NumberOfRows; i++)
             {
                 for (int j = 0; j < resultMatrix.NumberOfColumns; j++)
                 {
-                    sum = matrixA[i, j] + matrixB[i, j];
-                    resultMatrix[i, j] = sum;
+                    resultMatrix[i, j] = matrixA[i, j] + matrixB[i, j];
                 }
             }
             return resultMatrix;
@@ -203,44 +200,31 @@ namespace Assignment2
             }
 
             Matrix transpose = Transpose(matrix);
-            Matrix IdentityMatrix = new Matrix(matrix.NumberOfRows, matrix.NumberOfColumns);
-            for (int i = 0; i < IdentityMatrix.NumberOfRows; i++)
-            {
-                for (int j = 0; j < IdentityMatrix.NumberOfColumns; j++)
-                {
-                    if (i==j)
-                    {
-                        IdentityMatrix[i, j] = 1;
-                    }
-                    else
-                    {
-                        IdentityMatrix[i, j] = 0;
-                    }
-                }
-            }
+            IdentityMatrix IdentityMatrix = new IdentityMatrix(matrix.NumberOfRows);
 
             var mult = Multiplication(matrix, transpose);
-            return Equals(mult, IdentityMatrix);
+            var multII = Multiplication(transpose, matrix);
+            return Equal(mult, IdentityMatrix) && Equal(multII, IdentityMatrix);
         }
 
         //Two matrices are equal if all three of the following conditions are met:
         //Each matrix has the same number of rows.
         //Each matrix has the same number of columns.
         //Corresponding elements within each matrix are equal.
-        public static bool Equals(Matrix A,Matrix B)
+        public static bool Equal(Matrix A,IdentityMatrix B)
         {
             if (A == null && B==null)
             {
                 throw new Exception("Matrix is empty!");
             }
-            if (A.NumberOfRows != B.NumberOfRows && A.NumberOfColumns != B.NumberOfColumns)
+            if (A.NumberOfRows != B.NumberOfRowsAndColumns && A.NumberOfColumns != B.NumberOfRowsAndColumns)
             {
                 return false;
             }
 
             for (int i = 0; i < A.NumberOfRows; i++)
             {
-                for (int j = 0; j < B.NumberOfRows; j++)
+                for (int j = 0; j < B.NumberOfRowsAndColumns; j++)
                 {
                     if (A[i,j] != B[i,j])
                     {
