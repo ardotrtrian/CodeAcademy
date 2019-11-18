@@ -38,6 +38,7 @@ namespace Assignement2._2
                 {
                     return true;
                 }
+
                 int i;
 
                 for (i = 2; i < currentPrimeNumber / 2 + 1; i++)

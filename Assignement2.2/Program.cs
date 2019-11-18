@@ -13,12 +13,15 @@ namespace Assignement2._2
         {
             //Create an Enumertar function Power() that returns all powers of number from 1 to its exponent
 
-            //int number = 3;
-            //int exponent = 6;
-            //foreach (var item in Power(number,exponent))
-            //{
-            //    Console.Write($"{item} ");
-            //}
+            int number = 3;
+            int exponent = 6;
+
+            Console.WriteLine($"All powers of {number} to {exponent} are:");
+
+            foreach (var item in Power(number, exponent))
+            {
+                Console.Write($"{item} ");
+            }
 
             //---------------------------------------------------------------------------------------------
 
@@ -28,7 +31,7 @@ namespace Assignement2._2
 
             IEnumerator enumerator = primeNumbers.GetEnumerator();
 
-            Console.WriteLine($"Prime numbers until 100 are:");
+            Console.WriteLine($"\nPrime numbers until 100 are:");
             
             while(enumerator.MoveNext())
             {
@@ -36,13 +39,12 @@ namespace Assignement2._2
                 {
                     break;
                 }
-
                 Console.Write($"{enumerator.Current} ");
             }
 
             //-------------------------------------------------------------------------------------------
 
-            //Implement a class BinaryTree and an enumerator doing a prefic traversal.
+            //Implement a class BinaryTree and an enumerator doing a prefix traversal.
 
             //TODO
 
