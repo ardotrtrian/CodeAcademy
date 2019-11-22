@@ -9,15 +9,7 @@ namespace Assignment4
 {
     class Multimap<TKey, TValue> : IDictionary<TKey, List<TValue>>
     {
-        //KeyValuePair<TKey, List<TValue>>[] source;
-
-        //the inner implementation of a multimap is an array of linkedList nodes. Each node contains the key value pairs of the multimap.
-        //we get the hash code of the key, and we get an integer which represents the indexof the inner array.
-        //
-
-        //private LinkedList<KeyValuePair<TKey,List<TValue>>> []testsource;
-        
-        private Dictionary<TKey, List<TValue>> source;
+        private readonly Dictionary<TKey, List<TValue>> source;
         public List<TValue> this[TKey key]
         {
             get
@@ -42,9 +34,15 @@ namespace Assignment4
 
         public ICollection<List<TValue>> Values => source.Select(v => v.Value).ToList();
 
-        public int Count => throw new NotImplementedException();
+        public int Count
+        {
+            get
+            {
+                return source.Keys.Count;
+            }
+        }
 
-        public bool IsReadOnly => throw new NotImplementedException();
+        public bool IsReadOnly => false;
 
 
         public Multimap()
@@ -91,13 +89,26 @@ namespace Assignment4
 
         public void Clear()
         {
+            if (source == null)
+            {
+                throw new Exception("Multimap is empty");
+            }
             source.Clear();
         }
 
         public bool Contains(KeyValuePair<TKey, List<TValue>> item)
         {
-            throw new NotImplementedException();
+            if (item.Key == null || item.Value == null)
+            {
+                throw new Exception("Key or value can not be null");
+            }
+            if (source.Contains(item))
+            {
+                return true;
+            }
+            return false;
         }
+
 
         public bool ContainsKey(TKey key)
         {
@@ -114,32 +125,67 @@ namespace Assignment4
 
         public void CopyTo(KeyValuePair<TKey, List<TValue>>[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
-        }
+            if (arrayIndex < 0)
+            {
+                throw new Exception("Index is less than zero");
+            }
+            if (this.source.Count > array.Length - arrayIndex)
+            {
+                throw new Exception("number of elements in source is greater than available space in array");
+            }
 
-        public IEnumerator<KeyValuePair<TKey, List<TValue>>> GetEnumerator()
-        {
-            throw new NotImplementedException();
+            var allKeys = Keys.ToList();
+
+            for (int i = 0; i < source.Count; i++)
+            {
+                var currentKey = allKeys[i];
+                var currentValue = source[allKeys[i]];
+                array[i] = new KeyValuePair<TKey, List<TValue>>(currentKey, currentValue);
+            }
         }
 
         public bool Remove(TKey key)
         {
-            throw new NotImplementedException();
+            if (key == null)
+            {
+                throw new Exception("Key is null");
+            }
+            if (!source.ContainsKey(key))
+            {
+                return false;
+            }
+            source.Remove(key);
+            return true;
         }
 
         public bool Remove(KeyValuePair<TKey, List<TValue>> item)
         {
-            throw new NotImplementedException();
+            bool removedOrNO = Remove(item.Key);
+            return removedOrNO;
         }
 
         public bool TryGetValue(TKey key, out List<TValue> value)
         {
-            throw new NotImplementedException();
+            if (key == null)
+            {
+                throw new Exception("Key is null");
+            }
+            if (!source.ContainsKey(key))
+            {
+                value = null;
+                return false;
+            }
+            value = source[key];
+            return true;
         }
 
+        public IEnumerator<KeyValuePair<TKey, List<TValue>>> GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }

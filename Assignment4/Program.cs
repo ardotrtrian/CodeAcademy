@@ -28,7 +28,9 @@ namespace Assignment4
 
             var list = multimap[2];
 
-            Dictionary<int, List<int>> keyValuePairs = new Dictionary<int, List<int>>();
+            KeyValuePair<int,List<int>>[] result = new KeyValuePair<int, List<int>>[3];
+
+            multimap.CopyTo(result, 0);
         }
     }
 }
