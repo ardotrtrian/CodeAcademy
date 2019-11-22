@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3928ED3-994B-445D-BC3E-F921F421B436}</ProjectGuid>
+    <ProjectGuid>{5D280E0C-090D-4869-8120-3855BBF0D151}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Assignment4</RootNamespace>
-    <AssemblyName>Assignment4</AssemblyName>
+    <RootNamespace>Assignment4._1</RootNamespace>
+    <AssemblyName>Assignment4.1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Multimap.cs" />
+    <Compile Include="Airport.cs" />
+    <Compile Include="SizesEnum.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

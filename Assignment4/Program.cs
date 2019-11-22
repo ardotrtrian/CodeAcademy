@@ -16,14 +16,19 @@ namespace Assignment4
             The implemented type should implement IDictionary interface (generic one
             defined in System.Collections.Generic namespace), i.e. all methods defined in the
             interface should be implemented.
-            
-            2.
-            The sizes of airports are categorized into these 5 groups: Small, Medium, Large, Mega, Super Mega.
-            Given a list of airports order them according to their size.
          */
 
         static void Main(string[] args)
         {
+            Multimap<int, int> multimap = new Multimap<int, int>();
+
+            multimap.Add(2,new List<int>() { 1,2,3,4});
+            multimap.Add(3, new List<int>() { 3,4});
+            multimap.Add(1, new List<int>() { 1});
+
+            var list = multimap[2];
+
+            Dictionary<int, List<int>> keyValuePairs = new Dictionary<int, List<int>>();
         }
     }
 }
