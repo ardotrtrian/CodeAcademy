@@ -10,6 +10,7 @@ namespace Assignment4
     class Multimap<TKey, TValue> : IDictionary<TKey, List<TValue>>
     {
         private readonly Dictionary<TKey, List<TValue>> source;
+
         public List<TValue> this[TKey key]
         {
             get
@@ -44,7 +45,6 @@ namespace Assignment4
 
         public bool IsReadOnly => false;
 
-
         public Multimap()
         {
             source = new Dictionary<TKey, List<TValue>>();
@@ -63,11 +63,9 @@ namespace Assignment4
             //if the key already exist, add the additional values to the existing values.
             if (source.ContainsKey(key))
             {
-                source[key].Concat(value);
+                throw new Exception("Key already exists");
             }
-            //if the key does not exist, create new key with values.
             source.Add(key, value);
-            
         }
 
         public void Add(KeyValuePair<TKey, List<TValue>> item)
@@ -118,9 +116,9 @@ namespace Assignment4
             }
             if (source.ContainsKey(key))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         public void CopyTo(KeyValuePair<TKey, List<TValue>>[] array, int arrayIndex)
@@ -160,8 +158,8 @@ namespace Assignment4
 
         public bool Remove(KeyValuePair<TKey, List<TValue>> item)
         {
-            bool removedOrNO = Remove(item.Key);
-            return removedOrNO;
+            bool removedOrNo = Remove(item.Key);
+            return removedOrNo;
         }
 
         public bool TryGetValue(TKey key, out List<TValue> value)
@@ -181,11 +179,12 @@ namespace Assignment4
 
         public IEnumerator<KeyValuePair<TKey, List<TValue>>> GetEnumerator()
         {
-            return GetEnumerator();
+            return this.source.GetEnumerator();
         }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            throw new NotImplementedException();
         }
     }
 }
