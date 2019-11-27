@@ -53,6 +53,7 @@
     <Compile Include="Classes\Sales.cs" />
     <Compile Include="Classes\SalesEmployee.cs" />
     <Compile Include="Enums\Department.cs" />
+    <Compile Include="Enums\State.cs" />
     <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Interfaces\IDeveloper.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />

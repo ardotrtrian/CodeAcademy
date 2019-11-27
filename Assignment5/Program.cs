@@ -40,14 +40,14 @@ namespace Assignment5
                 Name = "Bank System" , 
                 StartDate = DateTime.Today , 
                 Details = "https://study.com/academy/lesson/banking-system-definition-types.html",
-                IsOpen = true 
+                State = Enums.State.Open
             };
             IProject Project2 = new Project()
             {
                 Name = "Flappy Bird Game",
                 StartDate = new DateTime(2019, 04, 01),
                 Details = "https://flappybird.io/",
-                IsOpen = false
+                State = Enums.State.Closed
             };
 
             //Developer

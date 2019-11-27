@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment5.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace Assignment5.Interfaces
         string Name { get; set; }
         DateTime StartDate { get; set; }
         string Details { get; set; }
-        bool IsOpen { get; set; }  //False represents a closed project
+        State State { get; set; }  //False represents a closed project
     }
 }

@@ -13,7 +13,7 @@ namespace Assignment5.Classes
         public override string ToString()
         {
             return $"{base.ToString()} Employee Type : {this.GetType().BaseType.Name} , Number Of Project he is currently working on :" +
-                $" { (Projects != null ? Projects.Where(p => p.IsOpen == true).Count() : 0)} ";
+                $" { (Projects != null ? Projects.Where(p => p.State == Enums.State.Open).Count() : 0)} ";
         }
     }
 }

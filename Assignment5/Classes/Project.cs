@@ -1,4 +1,5 @@
-﻿using Assignment5.Interfaces;
+﻿using Assignment5.Enums;
+using Assignment5.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,6 @@ namespace Assignment5.Classes
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public string Details { get; set; }
-        public bool IsOpen { get; set; }
+        public State State { get; set; }
     }
 }
