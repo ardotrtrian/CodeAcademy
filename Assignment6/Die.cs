@@ -22,8 +22,8 @@ namespace Assignment6
 
             int previousRoll = 0;  
             int currentRoll;
-            int countOfTwoFours = 0;  //number of 4 tosses occured
-            int dieToss = 1;       //to keep track of die tossing process
+            int countOfTwoFours = 0;   //number of 4 tosses occured
+            int dieToss = 1;           //to keep track of die tossing process
 
             //To save the previous 5 tosses
             List<int> FiveRollsValues = new List<int>();
@@ -41,7 +41,7 @@ namespace Assignment6
                     TwoFoursEventHandler.Invoke(countOfTwoFours);   //invoke the event 
                 }
 
-                //add the curretn toss value to the list
+                //add the current toss value to the list
                 FiveRollsValues.Add(currentRoll);   
 
                 //if the list already contains five tosses 
@@ -57,7 +57,7 @@ namespace Assignment6
                     FiveRollsValues.RemoveAt(0);
                 }
 
-                //now the curretn toss value becomes the previous toss value
+                //now the current toss value becomes the previous toss value
                 previousRoll = currentRoll;
 
                 Console.WriteLine();
