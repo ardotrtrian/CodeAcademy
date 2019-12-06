@@ -36,7 +36,7 @@ namespace Assignment6._1
                 }
             }
 
-            FileSuccessfullyRead?.Invoke();  //raise this event when file is read
+            FileSuccessfullyReadEventHandler?.Invoke();  //raise this event when file is read
 
             return recordsInFile;
         }
