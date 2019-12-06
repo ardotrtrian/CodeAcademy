@@ -33,8 +33,7 @@ namespace Assignment6
             int dieToss = 1;           //to keep track of die tossing process
 
             //To save the previous 5 tosses
-            //better to use a list here, since the inner inplementation of list in C# is a doubly linked list 
-            //which makes removing the first node (head), a constant operatioan with O(1) time complexity
+
             List<int> FiveRollsValues = new List<int>();
 
             for (int i = 0; i < RollsCount; i++)
