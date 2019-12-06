@@ -8,13 +8,20 @@ namespace Assignment6
 {
     class Die
     {
-        public delegate void TwoFoursInRowDelegate(int count);
+        public delegate void TwoFoursInRowDelegate(object source, int count);
 
-        public delegate void FiveTossesSum(List<int> Tosses);
+        public delegate void FiveTossesSum(object source, List<int> Tosses);
 
+        //--
         public event TwoFoursInRowDelegate TwoFoursEventHandler;
+        // Or use this instead of a backing delegate :: 
+        //public event EventHandler<int> TwoFoursEventHandler;
+        //--
 
-        public event FiveTossesSum FiveTossesSumEventHandler; 
+        public event FiveTossesSum FiveTossesSumEventHandler;
+
+        //EventHandler without using a backing delegate
+        public event Action DieExperimentFinished; 
 
         public void Roll(int RollsCount)
         {
@@ -26,6 +33,8 @@ namespace Assignment6
             int dieToss = 1;           //to keep track of die tossing process
 
             //To save the previous 5 tosses
+            //better to use a list here, since the inner inplementation of list in C# is a doubly linked list 
+            //which makes removing the first node (head), a constant operatioan with O(1) time complexity
             List<int> FiveRollsValues = new List<int>();
 
             for (int i = 0; i < RollsCount; i++)
@@ -38,7 +47,7 @@ namespace Assignment6
                 if (previousRoll == 4 && currentRoll == 4 )    
                 {
                     countOfTwoFours++;
-                    TwoFoursEventHandler.Invoke(countOfTwoFours);   //invoke the event 
+                    TwoFoursEventHandler?.Invoke(this, countOfTwoFours);   //raise the event 
                 }
 
                 //add the current toss value to the list
@@ -50,7 +59,7 @@ namespace Assignment6
                     //and sum is equal to 20 or more 
                     if (FiveRollsValues.Sum() >= 20)
                     {
-                        FiveTossesSumEventHandler.Invoke(FiveRollsValues);  //invoke the event 
+                        FiveTossesSumEventHandler?.Invoke(this, FiveRollsValues);  //raise the event 
                     }
 
                     //once the event invoking process is over , remove the toss value that occured 5 tosses earlier
@@ -62,7 +71,8 @@ namespace Assignment6
 
                 Console.WriteLine();
             }
-
+            //Once the experiment is over, we raise this event
+            DieExperimentFinished?.Invoke();
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32D7CE31-314D-4167-A95F-22BFFA34D39D}</ProjectGuid>
+    <ProjectGuid>{9877499B-5769-493B-B741-0D9E31442E6D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Assignment6</RootNamespace>
-    <AssemblyName>Assignment6</AssemblyName>
+    <RootNamespace>Assignment6._1</RootNamespace>
+    <AssemblyName>Assignment6.1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Die.cs" />
-    <Compile Include="DieTossingValues.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
