@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment5.Interfaces
 {
-    interface ISales 
+    interface ISales                        //Might also be okay if we dont implement an interface for Sales class.
     {
         string ProductName { get; set; }
         DateTime Date { get; set; }

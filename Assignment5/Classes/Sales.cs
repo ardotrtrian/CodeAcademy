@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment5.Classes
 {
-    class Sales : ISales
+    class Sales : ISales                
     {
         public string ProductName { get; set; }
         public DateTime Date { get; set; }

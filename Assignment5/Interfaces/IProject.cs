@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Assignment5.Interfaces
 {
-    interface IProject
+    interface IProject                  //Might also be okay if we dont implement an interface for Project class.
     {
         string Name { get; set; }
         DateTime StartDate { get; set; }
         string Details { get; set; }
-        State State { get; set; }  //False represents a closed project
+        State State { get; set; } 
     }
 }
