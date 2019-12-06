@@ -8,7 +8,7 @@ namespace Assignment6._1
 {
     class FileReader
     {
-        public event Action FileSuccessfullyRead;
+        public event Action FileSuccessfullyReadEventHandler;
 
         public List<Car> ReadFile(string filePath)
         {
