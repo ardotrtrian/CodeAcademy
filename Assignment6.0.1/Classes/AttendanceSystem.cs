@@ -18,7 +18,7 @@ namespace Assignment6._0._1
             new Users() { Id=1000, FirstName="Jack", LastName="Sparrow", Status = Status.Banned },
             new Users() { Id=1001, FirstName="George", LastName="Clooney", Status = Status.Active},
             new Users() { Id=1002, FirstName="Steven", LastName="Spielberg", Status = Status.Banned},
-            new Users() { Id=1003, FirstName="Matthew", LastName="Mcconaughey", Status = Status.Active},
+            new Users() { Id=1003, FirstName="Matthew", LastName="Mcconaughey", Status = Status.Banned},
             new Users() { Id=1004, FirstName="Will", LastName="Smith", Status = Status.Active},
             new Users() { Id=1005, FirstName="Emma", LastName="Stone", Status = Status.Active},
             new Users() { Id=1006, FirstName="Christopher", LastName="Nolan", Status = Status.Active},

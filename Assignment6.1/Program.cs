@@ -17,7 +17,7 @@ namespace Assignment6._1
 
             fileReader.FileSuccessfullyReadEventHandler += OnFileSuccessfullyRead;
 
-            var resultRecords = fileReader.ReadFile(@"C:\Users\artavazd.trtrian\source\repos\Assignment1\Assignment6.1\csvfiles\cars.csv").ToList();
+            var resultRecords = fileReader.ReadFile(@"csvfiles\cars.csv").ToList();
 
             int count = 0;
 
