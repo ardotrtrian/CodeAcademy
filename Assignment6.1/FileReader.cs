@@ -24,7 +24,7 @@ namespace Assignment6._1
 
             var reader = new StreamReader(filePath);
 
-            List<Car> recordsInFile = new List<Car>() ;
+            List<Car> recordsInFile = new List<Car>();
 
             using (var csv = new CsvReader(reader))
             {

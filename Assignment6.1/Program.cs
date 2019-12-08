@@ -20,7 +20,7 @@ namespace Assignment6._1
             var resultRecords = fileReader.ReadFile(@"csvfiles\cars.csv").ToList();
 
             int count = 0;
-
+            
             foreach (var rec in resultRecords)
             {
                 Console.WriteLine
