@@ -8,9 +8,9 @@ namespace Assignment6
 {
     class Die
     {
-        public delegate void TwoFoursInRowDelegate(object source, int count);
+        public delegate void TwoFoursInRowDelegate(int count);
 
-        public delegate void FiveTossesSum(object source, List<int> Tosses);
+        public delegate void FiveTossesSum(List<int> Tosses);
 
         //--
         public event TwoFoursInRowDelegate TwoFoursEventHandler;
@@ -46,7 +46,7 @@ namespace Assignment6
                 if (previousRoll == 4 && currentRoll == 4 )    
                 {
                     countOfTwoFours++;
-                    TwoFoursEventHandler?.Invoke(this, countOfTwoFours);   //raise the event 
+                    TwoFoursEventHandler?.Invoke(countOfTwoFours);   //raise the event 
                 }
 
                 //add the current toss value to the list
@@ -58,7 +58,7 @@ namespace Assignment6
                     //and sum is equal to 20 or more 
                     if (FiveRollsValues.Sum() >= 20)
                     {
-                        FiveTossesSumEventHandler?.Invoke(this, FiveRollsValues);  //raise the event 
+                        FiveTossesSumEventHandler?.Invoke(FiveRollsValues);  //raise the event 
                     }
 
                     //once the event invoking process is over , remove the toss value that occured 5 tosses earlier

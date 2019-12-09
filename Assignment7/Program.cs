@@ -33,8 +33,6 @@ namespace Assignment7
             account101.Withdraw(100_000);
             account101.Deposit(40_000);
             account101.Deposit(-40_000);
-
-
         }
     }
 }

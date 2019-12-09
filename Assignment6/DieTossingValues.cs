@@ -8,12 +8,12 @@ namespace Assignment6
 {
     class DieTossingValues
     {
-        public void OnTwoFoursCount(object source, int count)
+        public void OnTwoFoursCount(int count)
         {
             Console.Write($" => Two Fours in a row ({count})");
         }
 
-        public void OnSumIsGreaterThanTwenty(object source, List<int> FiveTosses)
+        public void OnSumIsGreaterThanTwenty(List<int> FiveTosses)
         {
             Console.Write(" => last 5 tosses values are greater than twenty : ");
 
