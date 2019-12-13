@@ -8,18 +8,18 @@ namespace Assignment6._0._1.Extension_Methods
 {
     static class StringHelper
     {
-        public static string FirstToUpper(this string Input)
+        public static string FirstToUpper(this string input)
         {
-            if (Input.Length > 0)
+            if (input.Length > 0)
             {
-                char[] charArray = Input.ToCharArray();
+                char[] charArray = input.ToCharArray();
                 if (char.IsLower(charArray[0]))
                 {
                     charArray[0] = char.ToUpper(charArray[0]);
                     return new string(charArray);
                 }
             }
-            return Input;
+            return input;
         }
     }
 }
