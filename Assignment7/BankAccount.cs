@@ -20,12 +20,23 @@ namespace Assignment7
             }
             set
             {
-                if (value < 0.0 || value > 22.0 )
+                try
                 {
-                    throw new InvalidInterestRateException();
-                }
+                    if (value < 0.0 || value > 22.0)
+                    {
+                        throw new InvalidInterestRateException();
+                    }
 
-                this._InterestRate = value;
+                    this._InterestRate = value;
+                }
+                catch (InvalidInterestRateException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    _InterestRate = 22.0;
+                }
             }
         }
 
