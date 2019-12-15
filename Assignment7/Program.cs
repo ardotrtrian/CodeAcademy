@@ -24,7 +24,8 @@ namespace Assignment7
     {
         static void Main(string[] args)
         {
-            BankAccount account101 = new BankAccount(230_500.50, 5.7);
+            BankAccount account101 = new BankAccount(230_500.50, 23.0);
+            Console.WriteLine(account101.InterestRate);
             OperationSuccessMessages messages = new OperationSuccessMessages();     //event subscriber
 
             account101.DepositSuccessEventHandler += messages.OnDepositSuccess;
@@ -33,8 +34,8 @@ namespace Assignment7
             account101.Withdraw(100_000);
             account101.Deposit(40_000);
             account101.Deposit(-40_000);
-
-
+            account101.Withdraw(-30_000);
+            account101.Withdraw(400_000);
         }
     }
 }

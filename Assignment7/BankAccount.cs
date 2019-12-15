@@ -20,12 +20,23 @@ namespace Assignment7
             }
             set
             {
-                if (value < 0.0 || value > 22.0 )
+                try
                 {
-                    throw new InvalidInterestRateException();
-                }
+                    if (value < 0.0 || value > 22.0)
+                    {
+                        throw new InvalidInterestRateException();
+                    }
 
-                this._InterestRate = value;
+                    this._InterestRate = value;
+                }
+                catch (InvalidInterestRateException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    _InterestRate = 22.0;
+                }
             }
         }
 
@@ -40,29 +51,50 @@ namespace Assignment7
 
         public void Withdraw(double amount)
         {
-            if (amount > Balance)
+            try
             {
-                throw new LargeWithdrawAmountException();
+                if (amount > Balance)
+                {
+                    throw new LargeWithdrawAmountException();
+                }
+                if (amount < 0)
+                {
+                    throw new NegativeAmountException();
+                }
+
+                Balance -= amount;
+
+                WithdrawSuccessEventHandler?.Invoke(this.Balance);
             }
-            if (amount < 0)
+            catch (LargeWithdrawAmountException ex)
             {
-                throw new NegativeAmountException();
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"-- Your balance is {this.Balance} --");
+            }
+            catch (NegativeAmountException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"-- Your balance is {this.Balance} --");
             }
 
-            Balance -= amount;
-
-            WithdrawSuccessEventHandler?.Invoke(this.Balance);
         }
         public void Deposit(double amount)
         {
-            if (amount < 0)
+            try
             {
-                throw new NegativeAmountException();
+                if (amount < 0)
+                {
+                    throw new NegativeAmountException();
+                }
+                Balance += amount;
+
+                DepositSuccessEventHandler?.Invoke(this.Balance);
             }
-
-            Balance += amount;
-
-            DepositSuccessEventHandler?.Invoke(this.Balance);
+            catch(NegativeAmountException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"-- Your balance is {this.Balance} --");
+            }
         }
     }
 }
