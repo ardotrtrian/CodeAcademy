@@ -21,6 +21,7 @@ namespace Assignment8
             }
             throw new ArgumentNullException("Source is null!");
         }
+
         public static IEnumerable<TResult> MySelect<TSource, TResult>
             (this IEnumerable<TSource> source, Func<TSource, TResult> selector)
         {
@@ -34,6 +35,7 @@ namespace Assignment8
             }
             throw new ArgumentNullException("source is null!");
         }
+
         public static List<TSource> MyToList<TSource>(this IEnumerable<TSource> source)
         {
             if (source == null)
@@ -42,6 +44,7 @@ namespace Assignment8
             }
             return new List<TSource>(source);
         }
+
         public static Dictionary<TKey, TSource> MyToDictionary<TSource, TKey>
             (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
@@ -53,6 +56,10 @@ namespace Assignment8
 
                     foreach (var element in source)
                     {
+                        if (dic.ContainsKey(keySelector(element)))
+                        {
+                            throw new Exception("Key Selector must be unique for each element!");
+                        }
                         dic.Add(keySelector(element), element);
                     }
                     return dic;
@@ -60,6 +67,21 @@ namespace Assignment8
                 throw new ArgumentNullException("Key Selector is null!");
             }
             throw new ArgumentNullException("Source is null!");
+        }
+
+        //TODO
+        public static IEnumerable<IGrouping<TKey, TSource>> MyGroupBy<TSource, TKey>
+            (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            return null;
+        }
+
+        //TODO
+        //Two overloads (ascending, descending)
+        public static IOrderedEnumerable<TSource> MyOrderBy<TSource, TKey>
+            (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            return null;
         }
     }
 }

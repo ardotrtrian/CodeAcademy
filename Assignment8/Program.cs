@@ -12,6 +12,7 @@ namespace Assignment8
         //Select, Where, GroupBy, ToList, OrderBy, ToDictionary..
         static void Main(string[] args)
         {
+            //Where
             List<int> nums = new List<int>(5) { 1, 2, 3, 4, 5 };
             var books = nums.MyWhere(b => b > 3);
 
@@ -28,6 +29,7 @@ namespace Assignment8
             Books.Add(new Book { Id = 3, Name = "Book3" });
             Books.Add(new Book { Id = 4, Name = "Book4" });
 
+            //Select
             var bookNames = Books.MySelect(b => new { b.Name });
 
             foreach (var b in bookNames)
@@ -43,6 +45,8 @@ namespace Assignment8
                 Console.WriteLine(id);
             }
             Console.WriteLine();
+
+            //ToList
             var numList = nums.MyToList();
             foreach (var num in numList)
             {
@@ -50,11 +54,18 @@ namespace Assignment8
             }
 
             Console.WriteLine();
+
+            //ToDictionary
             var bookDictionaryById = Books.MyToDictionary(b => b.Id);
             foreach (var book in bookDictionaryById)
             {
                 Console.WriteLine($"{book.Key} : {book.Value.Name}");
             }
+            Console.WriteLine();
+
+            //where and toList
+            var numsList = nums.MyWhere(n => n > 2).MyToList();
+            
         }
     }
     class Book
