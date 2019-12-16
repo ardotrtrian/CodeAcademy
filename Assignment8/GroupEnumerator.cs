@@ -32,8 +32,13 @@ namespace Assignment8
         {
             while (Source.MoveNext())
             {
-
+                if (KeySelector.Equals(Source.Current))
+                {
+                    Current = Source.Current;
+                    return true;
+                }
             }
+            return false;
         }
 
         public void Reset()
