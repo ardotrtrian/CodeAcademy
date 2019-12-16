@@ -8,9 +8,10 @@ namespace Assignment8
 {
     static class ExtensionMethods
     {
-        public static IEnumerable<TSource> MyWhere<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        public static IEnumerable<TSource> MyWhere<TSource>
+            (this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
-            if (source !=null)
+            if (source != null)
             {
                 if (predicate != null)
                 {
@@ -20,13 +21,14 @@ namespace Assignment8
             }
             throw new ArgumentNullException("Source is null!");
         }
-        public static IEnumerable<TResult> MySelect<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
+        public static IEnumerable<TResult> MySelect<TSource, TResult>
+            (this IEnumerable<TSource> source, Func<TSource, TResult> selector)
         {
             if (source != null)
             {
                 if (selector != null)
                 {
-                    return new SelectEnumerable<TSource, TResult>(source,selector);
+                    return new SelectEnumerable<TSource, TResult>(source, selector);
                 }
                 throw new ArgumentNullException("selector is null!");
             }
@@ -34,7 +36,30 @@ namespace Assignment8
         }
         public static List<TSource> MyToList<TSource>(this IEnumerable<TSource> source)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("Source is null!");
+            }
             return new List<TSource>(source);
+        }
+        public static Dictionary<TKey, TSource> MyToDictionary<TSource, TKey>
+            (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            if (source != null)
+            {
+                if (keySelector != null)
+                {
+                    Dictionary<TKey, TSource> dic = new Dictionary<TKey, TSource>();
+
+                    foreach (var element in source)
+                    {
+                        dic.Add(keySelector(element), element);
+                    }
+                    return dic;
+                }
+                throw new ArgumentNullException("Key Selector is null!");
+            }
+            throw new ArgumentNullException("Source is null!");
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Assignment8
             Books.Add(new Book { Id = 3, Name = "Book3" });
             Books.Add(new Book { Id = 4, Name = "Book4" });
 
-            var bookNames = Books.MySelect(b => new { b.Name});
+            var bookNames = Books.MySelect(b => new { b.Name });
 
             foreach (var b in bookNames)
             {
@@ -47,6 +47,13 @@ namespace Assignment8
             foreach (var num in numList)
             {
                 Console.WriteLine(num);
+            }
+
+            Console.WriteLine();
+            var bookDictionaryById = Books.MyToDictionary(b => b.Id);
+            foreach (var book in bookDictionaryById)
+            {
+                Console.WriteLine($"{book.Key} : {book.Value.Name}");
             }
         }
     }
