@@ -20,6 +20,21 @@ namespace Assignment8
             }
             throw new ArgumentNullException("Source is null!");
         }
-
+        public static IEnumerable<TResult> MySelect<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
+        {
+            if (source != null)
+            {
+                if (selector != null)
+                {
+                    return new SelectEnumerable<TSource, TResult>(source,selector);
+                }
+                throw new ArgumentNullException("selector is null!");
+            }
+            throw new ArgumentNullException("source is null!");
+        }
+        public static List<TSource> MyToList<TSource>(this IEnumerable<TSource> source)
+        {
+            return new List<TSource>(source);
+        }
     }
 }
