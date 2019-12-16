@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Enumerator Classes\SelectEnumerator.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="GroupEnumerable.cs" />
+    <Compile Include="GroupEnumerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enumerable Classes\WhereEnumerable.cs" />

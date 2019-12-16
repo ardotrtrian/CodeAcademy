@@ -6,23 +6,23 @@ namespace Assignment8
 {
     internal class SelectEnumerable<TSource, TResult> : IEnumerable<TResult>
     {
-        private IEnumerable<TSource> source;
-        private Func<TSource, TResult> selector;
+        private readonly IEnumerable<TSource> Source;
+        private readonly Func<TSource, TResult> Selector;
 
         public SelectEnumerable(IEnumerable<TSource> source, Func<TSource, TResult> selector)
         {
-            this.source = source;
-            this.selector = selector;
+            this.Source = source;
+            this.Selector = selector;
         }
 
         public IEnumerator<TResult> GetEnumerator()
         {
-            return new SelectEnumerator<TSource,TResult>(source, selector);
+            return new SelectEnumerator<TSource,TResult>(Source, Selector);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new SelectEnumerator<TSource,TResult>(source, selector);
+            return new SelectEnumerator<TSource,TResult>(Source, Selector);
         }
     }
 }

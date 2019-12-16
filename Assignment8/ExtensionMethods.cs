@@ -73,7 +73,15 @@ namespace Assignment8
         public static IEnumerable<IGrouping<TKey, TSource>> MyGroupBy<TSource, TKey>
             (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
-            return null;
+            if (source != null)
+            {
+                if (keySelector != null)
+                {
+                    return new GroupEnumerable(source,keySelector);
+                }
+                throw new ArgumentNullException("Key Selector is null!");
+            }
+            throw new ArgumentNullException("Source is null!");
         }
 
         //TODO
