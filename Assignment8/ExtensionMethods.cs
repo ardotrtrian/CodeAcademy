@@ -68,36 +68,35 @@ namespace Assignment8
             }
             throw new ArgumentNullException("Source is null!");
         }
-
-        //TODO
-        //public static IEnumerable<IGrouping<TKey, TSource>> MyGroupBy<TSource, TKey>
-        //    (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-        //{
-        //    if (source != null)
-        //    {
-        //        if (keySelector != null)
-        //        {
-        //            return new GroupEnumerable(source,keySelector);
-        //        }
-        //        throw new ArgumentNullException("Key Selector is null!");
-        //    }
-        //    throw new ArgumentNullException("Source is null!");
-        //}
-
-        //TODO
-        //Two overloads (ascending, descending)
-        public static IOrderedEnumerable<TSource> MyOrderBy<TSource, TKey>
+       
+        public static IEnumerable<IGrouping<TKey, TSource>> MyGroupBy<TSource, TKey>
             (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
             if (source != null)
             {
                 if (keySelector != null)
                 {
-                    return new OrderEnumerable<TSource, TKey>(source, keySelector, true, null);
+                    return new GroupingEnumerable<TSource,TKey>(source, keySelector);
                 }
                 throw new ArgumentNullException("Key Selector is null!");
             }
             throw new ArgumentNullException("Source is null!");
         }
+
+        //TODO
+        //Two overloads (ascending, descending)
+        //public static IOrderedEnumerable<TSource> MyOrderBy<TSource, TKey>
+        //    (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        //{
+        //    if (source != null)
+        //    {
+        //        if (keySelector != null)
+        //        {
+        //            return new OrderEnumerable<TSource, TKey>(source, keySelector, true, null);
+        //        }
+        //        throw new ArgumentNullException("Key Selector is null!");
+        //    }
+        //    throw new ArgumentNullException("Source is null!");
+        //}
     }
 }

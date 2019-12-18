@@ -22,12 +22,13 @@ namespace Assignment8
             }
             Console.WriteLine();
 
-            List<Book> Books = new List<Book>();
-
-            Books.Add(new Book { Id = 2, Name = "Book1" });
-            Books.Add(new Book { Id = 4, Name = "Book2" });
-            Books.Add(new Book { Id = 1, Name = "Book3" });
-            Books.Add(new Book { Id = 3, Name = "Book4" });
+            var Books = new List<Book>
+            {
+                new Book { Id = 2, Name = "Book1", Genre = "Fiction" },
+                new Book { Id = 4, Name = "Book2", Genre = "Fiction" },
+                new Book { Id = 1, Name = "Book3", Genre = "Comedy" },
+                new Book { Id = 3, Name = "Book4", Genre = "Comedy" }
+            };
 
             //Select
             var bookNames = Books.MySelect(b => new { b.Name });
@@ -66,11 +67,15 @@ namespace Assignment8
             //where and toList
             var numsList = nums.MyWhere(n => n > 2).MyToList();
 
-            //Order By
-            var orderedBooks = Books.MyOrderBy(x => x.Id);
-            foreach (var item in orderedBooks)
+            //GroupBy
+            var GroupedBooks = Books.MyGroupBy(b => b.Genre);
+            foreach (var group in GroupedBooks)
             {
-                Console.WriteLine(item.Id);
+                Console.WriteLine($"{group.Key} : ");
+                foreach (var book in group)
+                {
+                    Console.WriteLine(book.Id);
+                }
             }
         }
     }
@@ -78,5 +83,6 @@ namespace Assignment8
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Genre { get; set; }
     }
 }

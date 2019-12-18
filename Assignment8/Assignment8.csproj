@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Group.cs" />
     <Compile Include="Enumerator Classes\SelectEnumerator.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="GroupEnumerable.cs" />
-    <Compile Include="GroupEnumerator.cs" />
+    <Compile Include="Enumerable Classes\GroupingEnumerable.cs" />
+    <Compile Include="Enumerator Classes\GroupingEnumerator.cs" />
+    <Compile Include="Enumerator Classes\GroupEnumerator.cs" />
     <Compile Include="OrderEnumerable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
