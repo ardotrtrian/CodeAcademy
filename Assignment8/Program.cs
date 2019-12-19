@@ -77,9 +77,9 @@ namespace Assignment8
                     Console.WriteLine(book.Id);
                 }
             }
-
+            Console.WriteLine();
             //OrderBy
-            var orderedBooks = Books.MyOrderBy(b => b.Id , true);
+            var orderedBooks = Books.MyOrderBy(b => b.Id,true);
             foreach (var book in orderedBooks)
             {
                 Console.Write($"{ book.Id} ");

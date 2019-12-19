@@ -46,11 +46,18 @@ namespace Assignment8
                 {
                     current = enumerator.Current;
 
-                    for (int i = 0; i < OrderedList.Count; i++)
+                    int size = OrderedList.Count;
+
+                    for (int i = 0; i < size; i++)
                     {
-                        if (this.Comparer.Compare(this.KeySelector(current), this.KeySelector(this.OrderedList[i])) < 0)
+                        if (this.Comparer.Compare(this.KeySelector(current), this.KeySelector(this.OrderedList[i])) < 0 )
                         {
                             this.OrderedList.Insert(i, current);
+                            break;
+                        }
+                        if (i == size - 1)
+                        {
+                            this.OrderedList.Add(current);
                         }
                     }
                 }
@@ -70,53 +77,23 @@ namespace Assignment8
                 {
                     current = enumerator.Current;
 
-                    for (int index = 0; index < OrderedList.Count; index++)
+                    int size = OrderedList.Count;
+
+                    for (int index = 0; index < size; index++)
                     {
                         if (this.Comparer.Compare(this.KeySelector(current), this.KeySelector(this.OrderedList[index])) > 0)
                         {
                             this.OrderedList.Insert(index, current);
+                            break;
+                        }
+                        if (index == size - 1)
+                        {
+                            this.OrderedList.Add(current);
                         }
                     }
                 }
             }
         }
-        //private void Sort()
-        //{
-
-        //    IEnumerator<TSource> enumerator = this.Source.GetEnumerator();
-        //    TSource current;
-
-        //    if (enumerator.MoveNext())
-        //    {
-        //        this.OrderedList.Add(enumerator.Current);
-
-        //        while (enumerator.MoveNext())
-        //        {
-        //            current = enumerator.Current;
-
-        //            if (Descending)
-        //            {
-        //                for (int index = 0; index < OrderedList.Count; index++)
-        //                {
-        //                    if (this.Comparer.Compare(this.KeySelector(current), this.KeySelector(this.OrderedList[index])) > 0)
-        //                    {
-        //                        this.OrderedList.Insert(index, current);
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                for (int index = 0; index < OrderedList.Count; index++)
-        //                {
-        //                    if (this.Comparer.Compare(this.KeySelector(current), this.KeySelector(this.OrderedList[index])) < 0)
-        //                    {
-        //                        this.OrderedList.Insert(index, current);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
 
         public IOrderedEnumerable<TSource> CreateOrderedEnumerable<TKey1>(Func<TSource, TKey1> keySelector, IComparer<TKey1> comparer, bool descending)
         {

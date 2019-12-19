@@ -83,8 +83,6 @@ namespace Assignment8
             throw new ArgumentNullException("Source is null!");
         }
 
-        //TODO
-        //Two overloads (ascending, descending)
         public static IOrderedEnumerable<TSource> MyOrderBy<TSource, TKey>
             (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, bool descending=false)
         {
