@@ -85,18 +85,18 @@ namespace Assignment8
 
         //TODO
         //Two overloads (ascending, descending)
-        //public static IOrderedEnumerable<TSource> MyOrderBy<TSource, TKey>
-        //    (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-        //{
-        //    if (source != null)
-        //    {
-        //        if (keySelector != null)
-        //        {
-        //            return new OrderEnumerable<TSource, TKey>(source, keySelector, true, null);
-        //        }
-        //        throw new ArgumentNullException("Key Selector is null!");
-        //    }
-        //    throw new ArgumentNullException("Source is null!");
-        //}
+        public static IOrderedEnumerable<TSource> MyOrderBy<TSource, TKey>
+            (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, bool descending=false)
+        {
+            if (source != null)
+            {
+                if (keySelector != null)
+                {
+                    return new OrderEnumerable<TSource, TKey>(source, keySelector, descending, Comparer<TKey>.Default);
+                }
+                throw new ArgumentNullException("Key Selector is null!");
+            }
+            throw new ArgumentNullException("Source is null!");
+        }
     }
 }

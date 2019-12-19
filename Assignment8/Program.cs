@@ -68,14 +68,21 @@ namespace Assignment8
             var numsList = nums.MyWhere(n => n > 2).MyToList();
 
             //GroupBy
-            var GroupedBooks = Books.MyGroupBy(b => b.Genre);
-            foreach (var group in GroupedBooks)
+            var groupedBooks = Books.MyGroupBy(b => b.Genre);
+            foreach (var group in groupedBooks)
             {
                 Console.WriteLine($"{group.Key} : ");
                 foreach (var book in group)
                 {
                     Console.WriteLine(book.Id);
                 }
+            }
+
+            //OrderBy
+            var orderedBooks = Books.MyOrderBy(b => b.Id , true);
+            foreach (var book in orderedBooks)
+            {
+                Console.Write($"{ book.Id} ");
             }
         }
     }

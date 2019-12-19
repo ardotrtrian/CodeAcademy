@@ -49,7 +49,7 @@
     <Compile Include="Enumerable Classes\GroupingEnumerable.cs" />
     <Compile Include="Enumerator Classes\GroupingEnumerator.cs" />
     <Compile Include="Enumerator Classes\GroupEnumerator.cs" />
-    <Compile Include="OrderEnumerable.cs" />
+    <Compile Include="Enumerable Classes\OrderEnumerable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enumerable Classes\WhereEnumerable.cs" />
