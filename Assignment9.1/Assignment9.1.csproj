@@ -50,5 +50,8 @@
     <None Include="App.config" />
     <None Include="Extendable Hello World Translator.docx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugins\Plugin.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
