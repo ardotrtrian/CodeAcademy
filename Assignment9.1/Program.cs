@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Plugin;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -35,34 +37,40 @@ namespace Assignment9._1
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            var resultAssembly = Assembly.LoadFrom(@"C:\Users\artavazd.trtrian\source\repos\Assignment1\Assignment9.1\Plugins\Plugin.dll");
+            Console.WriteLine("Hello World!");
 
-            Console.WriteLine("Hello World");
+            var Keys = ConfigurationManager.AppSettings.AllKeys;
 
-            foreach (var type in resultAssembly.DefinedTypes.Where(dt=>dt.BaseType.Name == "TranslatorBase"))
+            foreach (var key in Keys)
             {
-                var ctor = type.GetConstructors().Where(c=>c.GetParameters().Length == 0).FirstOrDefault(); //get constructor info
+                var resultAssembly = Assembly.LoadFrom($@"C:\Users\artavazd.trtrian\source\repos\Assignment1\Assignment9.1\Plugins\{ConfigurationManager.AppSettings[key]}");
 
-                var translator = ctor.Invoke(new object[0]); //instantiation 
-
-                var translateMethodInfo = translator.GetType().GetMethod("Translate"); //get method info
-
-                var translation = translateMethodInfo.Invoke(translator, new object[0]); //method call
-
-                var attributeInfo = type.CustomAttributes.FirstOrDefault(ca => ca.AttributeType.Name == "LanguageAttribute"); //get custom attribute info
-
-                string attributeFieldValue;
-
-                if (attributeInfo != null)
+                foreach (var type in resultAssembly.DefinedTypes.Where(dt => dt.BaseType == typeof(TranslatorBase)))
                 {
-                    attributeFieldValue = (string)attributeInfo.ConstructorArguments[0].Value;  //get attribute field value
-                }
-                else
-                {
-                    attributeFieldValue = "n/a";
+                    var translator = Activator.CreateInstance(type);  //instantiation 
+
+                    var translateMethodInfo = translator.GetType().GetMethod("Translate"); //get method info
+
+                    var translation = translateMethodInfo.Invoke(translator, new object[0]); //method call
+
+                    var attributeInfo = type.CustomAttributes.FirstOrDefault(ca => ca.AttributeType.Name == "LanguageAttribute"); //get custom attribute info
+
+                    string attributeFieldValue;
+
+                    //if (attributeInfo != null)
+                    //{
+                    //    attributeFieldValue = (string)attributeInfo.ConstructorArguments[0].Value;  //get attribute field value
+                    //}
+                    //else
+                    //{
+                    //    attributeFieldValue = "n/a";
+                    //}
+
+                    attributeFieldValue = (string)attributeInfo?.ConstructorArguments[0].Value ?? "n/a";  //get attribute field value
+
+                    Console.WriteLine($"{translation} ({attributeFieldValue})");
                 }
 
-                Console.WriteLine($"{translation} ({attributeFieldValue})");
             }
         }
     }

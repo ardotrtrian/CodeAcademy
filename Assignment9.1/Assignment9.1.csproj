@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,7 +52,17 @@
     <None Include="Extendable Hello World Translator.docx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Plugins\Plugin.dll" />
+    <ProjectReference Include="..\Plugin\Plugin.csproj">
+      <Project>{bd300175-a7a8-466d-b423-2e48670e33fa}</Project>
+      <Name>Plugin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Plugins\ArmenianTranslator.dll" />
+    <Content Include="Plugins\FinnishTranslator.dll" />
+    <Content Include="Plugins\RussianTranslator.dll" />
+    <Content Include="Plugins\SpanishTranslator.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
