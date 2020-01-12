@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29324.140
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment1", "Assignment1\Assignment1.csproj", "{9F736604-E38D-48C2-96C0-24C6ED9C646C}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment7", "Assignment7\Assignment7.csproj", "{C77805B7-F0B5-42F0-9270-F9961A9A017F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment8", "Assignment8\Assignment8.csproj", "{E5335520-1412-46BE-97A5-B7142E6FDB2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignmnet9TEST", "Assignmnet9TEST\Assignmnet9TEST.csproj", "{BF279A62-64B8-4428-890A-BDACFC61452A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{E5335520-1412-46BE-97A5-B7142E6FDB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5335520-1412-46BE-97A5-B7142E6FDB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5335520-1412-46BE-97A5-B7142E6FDB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF279A62-64B8-4428-890A-BDACFC61452A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF279A62-64B8-4428-890A-BDACFC61452A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF279A62-64B8-4428-890A-BDACFC61452A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF279A62-64B8-4428-890A-BDACFC61452A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
