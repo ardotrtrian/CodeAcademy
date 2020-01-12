@@ -27,7 +27,12 @@ namespace Assignment8
                 new Book { Id = 2, Name = "Book1", Genre = "Fiction" },
                 new Book { Id = 4, Name = "Book2", Genre = "Fiction" },
                 new Book { Id = 1, Name = "Book3", Genre = "Comedy" },
-                new Book { Id = 3, Name = "Book4", Genre = "Comedy" }
+                new Book { Id = 3, Name = "Book4", Genre = "Comedy" },
+                new Book { Id = 9, Name = "Book5", Genre = "Comedy" },
+                new Book { Id = 7, Name = "Book6", Genre = "Comedy" },
+                new Book { Id = 10, Name = "Book7", Genre = "Comedy" },
+                new Book { Id = 6, Name = "Book8", Genre = "Comedy" },
+                new Book { Id = 13, Name = "Book9", Genre = "Comedy" }
             };
 
             //Select
@@ -79,7 +84,7 @@ namespace Assignment8
             }
             Console.WriteLine();
             //OrderBy
-            var orderedBooks = Books.MyOrderBy(b => b.Id,true);
+            var orderedBooks = Books.MyOrderBy(b => b.Id);
             foreach (var book in orderedBooks)
             {
                 Console.Write($"{ book.Id} ");
