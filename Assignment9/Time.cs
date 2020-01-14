@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Assignment9
 {
-    struct Time
+    public struct Time
     {
-        public int TimeOfDayAsMinutes { get; set; }
+        public int TimeOfDayAsMinutes { get; private set; }
         public int Minutes { get; set; }
         public int Hours { get; set; }
-        public Time Noon
+        public static Time Noon
         {
             get
             {
@@ -37,6 +37,7 @@ namespace Assignment9
 
         public static Time operator +(Time left, Time right)
         {
+            
             if (left.Minutes > 59 || left.Minutes < 0 || right.Minutes > 59 || right.Minutes < 0)
             {
                 throw new Exception("Wrong minutes format");
@@ -45,13 +46,20 @@ namespace Assignment9
             {
                 throw new Exception("Wrong hours Format");
             }
+            if (left.Hours + right.Hours > 23)
+            {
+                throw new Exception("Hours can not exceed 23");
+            }
 
             var resultTime = new Time()
             {
+
+                Hours = left.Hours + right.Hours,
                 Minutes = left.Minutes + right.Minutes,
-                Hours = left.Hours + right.Hours
+                TimeOfDayAsMinutes = left.TimeOfDayAsMinutes + right.TimeOfDayAsMinutes
             };
 
+            
             if (resultTime.Minutes >= 60)
             {
                 resultTime.Hours++;
@@ -59,6 +67,7 @@ namespace Assignment9
             }
             return resultTime;
         }
+
         public static Time operator -(Time left, Time right)
         {
             if (left.Minutes > 59 || left.Minutes < 0 || right.Minutes > 59 || right.Minutes < 0)
@@ -73,7 +82,8 @@ namespace Assignment9
             var resultTime = new Time()
             {
                 Minutes = Math.Abs(left.Minutes - right.Minutes),
-                Hours = Math.Abs(left.Hours - right.Hours)
+                Hours = Math.Abs(left.Hours - right.Hours),
+                TimeOfDayAsMinutes = left.TimeOfDayAsMinutes - right.TimeOfDayAsMinutes
             };
 
             if (resultTime.Minutes >= 60)

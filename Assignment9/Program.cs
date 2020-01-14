@@ -25,7 +25,7 @@ namespace Assignment9
             Time resTime2 = time - time2;
             Console.WriteLine(resTime2.ToString());
 
-            Time time3 = (Time)110;
+            Time time3 = (Time)50;
 
             int minutes = (int)time3;
         }
