@@ -58,7 +58,6 @@ namespace Assignment9
                 Minutes = left.Minutes + right.Minutes,
                 TimeOfDayAsMinutes = left.TimeOfDayAsMinutes + right.TimeOfDayAsMinutes
             };
-
             
             if (resultTime.Minutes >= 60)
             {
@@ -99,10 +98,6 @@ namespace Assignment9
             if (minutes > 1439 || minutes < 0)
             {
                 throw new Exception("Minutes are out of 23 hours and 59 minutes boundaries");
-            }
-            if (true)
-            {
-
             }
             var resHours = minutes / 60;
             var resMinutes = minutes % 60;
