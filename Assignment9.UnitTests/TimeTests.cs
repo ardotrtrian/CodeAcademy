@@ -26,6 +26,11 @@ namespace Assignment9.UnitTests
 
             Assert.ThrowsException<Exception>(() => leftTime + rightTime);
         }
+        [TestMethod]
+        public void ImplicitCoversionFromMinutesToTime_OutOfOneDayBoundariesMinutes()
+        {
+            Assert.ThrowsException<Exception>(() => (Time)(1500));
+        }
 
         [TestMethod]
         public void AddingTwoTimeValues()

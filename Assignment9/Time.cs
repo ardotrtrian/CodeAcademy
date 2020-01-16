@@ -9,8 +9,8 @@ namespace Assignment9
     public struct Time
     {
         public int TimeOfDayAsMinutes { get; private set; }
-        public int Minutes { get; set; }
-        public int Hours { get; set; }
+        public int Minutes { get; private set; }
+        public int Hours { get; private set; }
         public static Time Noon
         {
             get
@@ -96,6 +96,14 @@ namespace Assignment9
 
         public static implicit operator Time(int minutes)
         {
+            if (minutes > 1439 || minutes < 0)
+            {
+                throw new Exception("Minutes are out of 23 hours and 59 minutes boundaries");
+            }
+            if (true)
+            {
+
+            }
             var resHours = minutes / 60;
             var resMinutes = minutes % 60;
 
