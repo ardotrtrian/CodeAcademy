@@ -10,6 +10,8 @@ namespace Exercise10._1
     {
         static void Main(string[] args)
         {
+            Alarm alarm = new Alarm();
+            alarm.SetAlarm(DateTime.Now.AddSeconds(4));
         }
     }
 }
