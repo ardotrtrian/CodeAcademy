@@ -10,7 +10,7 @@ namespace Exercise10._2
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>() { 2, 4, 5, 10, 11, 12, 13 };
+            List<int> list = new List<int>() { 2, 4, 5, 10, 11, 12, 13, 16, 18, 20, 32 };
 
             var newList = Primes.RemoveNonPrimes(list);
 

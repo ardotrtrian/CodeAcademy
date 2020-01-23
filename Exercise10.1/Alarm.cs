@@ -42,6 +42,10 @@ namespace Exercise10._1
         {
             Console.WriteLine("Alarm has went off. Press 'Esc' to cancel it.");
             Console.Beep(1000, 10000);
+            if (Console.ReadKey().Key == ConsoleKey.Escape)
+            {
+                Console.Clear();
+            }
         }
     }
 }

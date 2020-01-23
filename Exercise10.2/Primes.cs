@@ -16,7 +16,7 @@ namespace Exercise10._2
 
             Parallel.ForEach(collection, element =>
             {
-                Parallel.For(2, element / 2 + 1, (int n, ParallelLoopState state) =>
+                Parallel.For(2, (int)Math.Sqrt(element)+1, (int n, ParallelLoopState state) =>
                 {
                     if (element % n == 0)
                     {
